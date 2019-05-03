@@ -27,12 +27,11 @@ $dt.Columns[2].ColumnName = "Category"
 $dt.Columns[3].ColumnName = "Memo"
 $dt.Columns[4].ColumnName = "Outflow"
 $dt.Columns.Add("Inflow")
-$et = $dt | select -Skip 5
+$et = $dt | Select-Object -Skip 5
 
 $result = @()
 
 foreach ($i in $et) {
-    If ([int]$i[4] -lt 0) { continue }
     $i[0] = ([datetime]($i[0])).ToString('yyyy/MM/dd')
     $i[1] = $i[3]
     $i[2] = ''
@@ -42,4 +41,4 @@ foreach ($i in $et) {
     $result += $i
 }
 
-$result | ConvertTo-Csv -NoTypeInformation -Delimiter "," | % {$_ -replace '"', ''} | Out-File $outputFile -encoding utf8
+$result | ConvertTo-Csv -NoTypeInformation -Delimiter "," | ForEach-Object {$_ -replace '"', ''} | Out-File $outputFile -encoding utf8
