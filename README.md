@@ -3,7 +3,7 @@ Powershell script that converts an Everydaycard bank Excel file so it can be imp
 
 ### Usage
 ```@echo off
-Powershell.exe -executionpolicy remotesigned -File ConvertXlsToCsv.ps1 "kontotransactionlist.xls" "output_everydaycard.csv"
+Powershell.exe -executionpolicy remotesigned -File ConvertXlsToCsv.ps1 "Transaktionslista.xls" "output_everydaycard.csv"
 pause
 ```
 
